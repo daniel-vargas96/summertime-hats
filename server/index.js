@@ -32,6 +32,12 @@ app.get('/api/products', (req, res, next) => {
     .then(result => {
       const products = result.rows;
       res.json(products);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occured'
+      });
     });
 });
 
