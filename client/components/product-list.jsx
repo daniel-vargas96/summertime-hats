@@ -5,11 +5,25 @@ export default class ProductList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { products: [] }
+    this.state = { products: [] };
   }
 
   render() {
     return (
+
+      <div className="container">
+        <div className="row">
+          <div className="col-sm">
+            <ProductListItem />
+          </div>
+          <div className="col-sm">
+            <ProductListItem />
+          </div>
+          <div className="col-sm">
+            <ProductListItem />
+          </div>
+        </div>
+      </div>
 
     );
   }

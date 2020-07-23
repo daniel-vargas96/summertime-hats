@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './header';
-import ProductListItem from './product-list-item';
+import ProductList from './product-list';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -22,12 +22,15 @@ export default class App extends React.Component {
   render() {
     return (
       <>
-        <div className="container-fluid">
-          <div className="row">
+        <div className="container-fluid bg-light vh-100">
+          <div className="row bg-dark text-white vw-100 p-3 mb-5">
             <Header />
           </div>
+          <div className="row mb-5">
+            <ProductList />
+          </div>
           <div className="row">
-            <ProductListItem />
+            <ProductList />
           </div>
         </div>
       </>
