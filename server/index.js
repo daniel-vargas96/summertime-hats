@@ -41,6 +41,40 @@ app.get('/api/products', (req, res, next) => {
     });
 });
 
+app.get('/api/products/:productId', (req, res, next) => {
+  const productId = parseInt(req.params.productId, 10);
+  const params = [productId];
+  if (!Number.isInteger(productId) || productId <= 0) {
+    return res.status(400).json({
+      error: 'productId must be a positive number'
+    });
+  }
+
+  const productDetails = `
+    select *
+    from "products"
+    where "productId" = $1
+  `;
+
+  db.query(productDetails, params)
+    .then(result => {
+      const product = result.rows[0];
+      if (!product) {
+        res.status(404).json({
+          error: `Cant find grade with productId ${productId}`
+        });
+      } else {
+        res.json(product);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred'
+      });
+    });
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
