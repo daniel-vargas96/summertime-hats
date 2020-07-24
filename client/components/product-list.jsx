@@ -20,9 +20,10 @@ export default class ProductList extends React.Component {
   }
 
   render() {
+    const details = this.props.details;
     const productCards = this.state.products.map((product, index) =>
       <div key={index} className="col-md-4 mb-2">
-        <ProductListItem image={product.image} name={product.name} price={product.price} description={product.shortDescription} />
+        <ProductListItem image={product.image} name={product.name} price={product.price} description={product.shortDescription} details={() => details('details', { productId: product.productId })}/>
       </div>
     );
 

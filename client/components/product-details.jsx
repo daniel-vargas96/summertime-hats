@@ -1,5 +1,4 @@
 import React from 'react';
-import { response } from 'express';
 
 export default class ProductDetails extends React.Component {
   constructor(props) {
@@ -7,19 +6,28 @@ export default class ProductDetails extends React.Component {
     this.state({ product: null });
   }
 
-  componentDidMount(id) {
+  componentDidMount(productId) {
     const product = this.state.product;
-    const newProduct = product.filter(p => p.productId !== id)
-    fetch('/api/products/:productId')
+    const newProduct = product.filter(p => p.productId === productId);
+    fetch(`/api/products/${productId}`)
       .then(response => response.json())
-      .then(() => {
+      .then(data => {
         this.setState({ product: newProduct });
       });
   }
 
-  render () {
-    return (
+  render() {
 
-    )
+    return (
+      <div className="card">
+        <div className="card-body">
+          <h5 className="card-title">Card title</h5>
+          <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+        <img className="card-img-bottom" src="..." alt="Card image cap"></img>
+      </div>
+
+    );
   }
 }
