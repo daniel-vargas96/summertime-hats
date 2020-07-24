@@ -1,0 +1,9 @@
+.card-image {
+  height: 18rem;
+  object-fit: contain;
+}
+
+.paragraph {
+  height: 5rem;
+  overflow-y: hidden;
+}
