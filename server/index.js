@@ -44,11 +44,6 @@ app.get('/api/products', (req, res, next) => {
 app.get('/api/products/:productId', (req, res, next) => {
   const productId = parseInt(req.params.productId, 10);
   const params = [productId];
-  if (!Number.isInteger(productId) || productId <= 0) {
-    return res.status(400).json({
-      error: 'productId must be a positive number'
-    });
-  }
 
   const productDetails = `
     select *
@@ -59,20 +54,13 @@ app.get('/api/products/:productId', (req, res, next) => {
   db.query(productDetails, params)
     .then(result => {
       const product = result.rows[0];
-      if (!product) {
-        res.status(404).json({
-          error: `Cant find grade with productId ${productId}`
-        });
+      if (product) {
+        return res.json(product);
       } else {
-        res.json(product);
+        return next(new ClientError(`cant find product with productId ${productId}`, 404));
       }
     })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({
-        error: 'An unexpected error occurred'
-      });
-    });
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
