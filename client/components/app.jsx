@@ -26,10 +26,7 @@ export default class App extends React.Component {
           <div className="row bg-dark text-white vw-100 p-3 mb-5">
             <Header />
           </div>
-          <div className="row mb-5">
-            <ProductList />
-          </div>
-          <div className="row">
+          <div>
             <ProductList />
           </div>
         </div>
