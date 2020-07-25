@@ -4,9 +4,15 @@ export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({ product: null });
+    this.productDetails = this.productDetails.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
+    this.productDetails();
+  }
+
+  productDetails() {
     const productId = this.props.params.productId;
 
     fetch(`/api/products/${productId}`)
@@ -16,18 +22,30 @@ export default class ProductDetails extends React.Component {
       });
   }
 
+  handleClick() {
+    this.props.details('catalog', {});
+  }
+
   render() {
-
-    return (
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">Card Title</h5>
-          <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+    if (this.state.product === null) {
+      return null;
+    } else {
+      return (
+        <div className="card shadow object-fit p-3 col-md-10 d-flex">
+          <button className="btn btn-outline-light" onClick={this.handleClick}><p className="card-text"><small className="text-muted"> &lt; Back to catalog</small></p></button>
+          <div className="card-body">
+            <div className="d-flex">
+              <img className="mr-3" src={this.state.product.image} height="350px"></img>
+              <div>
+                <h5 className="card-title">{this.state.product.name}</h5>
+                <p className="text-muted">{'$' + (this.state.product.price / 100).toFixed(2)}</p>
+                <p className="card-text">{this.state.product.shortDescription}</p>
+              </div>
+            </div>
+          </div>
+          <p>{this.state.product.longDescription}</p>
         </div>
-        <img className="card-img-bottom" src="..." alt="Card image cap"></img>
-      </div>
-
-    );
+      );
+    }
   }
 }

@@ -57,8 +57,8 @@ export default class App extends React.Component {
             <div className="row bg-dark text-white vw-100 p-3 mb-5">
               <Header />
             </div>
-            <div>
-              <ProductDetails details={this.setView} params={params} />;
+            <div className="d-flex justify-content-center">
+              <ProductDetails details={this.setView} params={params} />
             </div>
           </div>
         </>
