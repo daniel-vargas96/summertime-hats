@@ -63,6 +63,67 @@ app.get('/api/products/:productId', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// Feature 5
+app.get('/api/cart', (req, res, next) => {
+  const getCart = `
+    select *
+    from "carts"
+  `;
+
+  db.query(getCart)
+    .then(result => {
+      const cart = result.rows;
+      return res.json(cart);
+    })
+    .catch(err => next(err));
+});
+
+app.post('/api/cart', (req, res, next) => {
+  const productId = req.params.productId;
+  const params = [productId];
+
+  const sql = `
+    select "price"
+    from "products"
+    where "productsId" = $1
+  `;
+
+  if (!Number.isInteger(productId) || productId <= 0) {
+    return next(new ClientError('productId must be a positive integer', 404));
+  }
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rows) {
+        return next(new ClientError('No matches available at this moment', 400));
+      } else {
+        if (req.session.cartId) {
+          return {
+            cartId: req.session.cartId,
+            price: result.rows[0].price
+          };
+        } else {
+          const addToCart = `
+          insert into "carts" ("cartId", "createdAt")
+          values (default, default)
+          returning "cartId"
+          `;
+          return db.query(addToCart)
+            .then(result1 => {
+              return {
+                cartId: result1.rows[0].cartId,
+                price: result1.rows[0].price
+              };
+            });
+        }
+      }
+    })
+    .then(data => {
+      // eslint-disable-next-line no-console
+      console.log(data);
+    });
+
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
