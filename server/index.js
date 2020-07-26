@@ -94,7 +94,7 @@ app.post('/api/cart', (req, res, next) => {
   db.query(sql, params)
     .then(result => {
       if (!result.rows) {
-        return next(new ClientError('No matches available at this moment', 400));
+        return next(new ClientError('No results available at this moment', 400));
       } else {
         if (req.session.cartId) {
           return {
@@ -111,7 +111,7 @@ app.post('/api/cart', (req, res, next) => {
             .then(result1 => {
               return {
                 cartId: result1.rows[0].cartId,
-                price: result1.rows[0].price
+                price: result.rows[0].price
               };
             });
         }
@@ -119,9 +119,39 @@ app.post('/api/cart', (req, res, next) => {
     })
     .then(data => {
       // eslint-disable-next-line no-console
-      console.log(data);
-    });
+      // console.log(data);
+      req.session.cartId = data.cartId;
+      const sql = `
+        insert into "cartItems" ("cartId", "productId", "price")
+        values ($1, $2, $3)
+        returning "cartItemId"
+      `;
 
+      const params = [data.cartId, req.params.productId];
+      return (
+        db.query(sql, params)
+          .then(result => result.rows[0])
+      );
+    })
+    .then(result => {
+      const sql = `
+        select "c"."cartItemId",
+      "c"."price",
+      "p"."productId",
+      "p"."image",
+      "p"."name",
+      "p"."shortDescription"
+      from "cartItems" as "c"
+      join "products" as "p" using ("productId")
+      where "c"."cartItemId" = $1
+      `;
+      const params = [result.cartItemId];
+      return db.query(sql, params)
+        .then(result => {
+          res.status(201).json(result.row[0]);
+        });
+    })
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
