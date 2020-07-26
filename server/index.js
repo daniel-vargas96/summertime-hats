@@ -57,7 +57,7 @@ app.get('/api/products/:productId', (req, res, next) => {
       if (product) {
         return res.json(product);
       } else {
-        return next(new ClientError(`cant find product with productId ${productId}`, 404));
+        throw new ClientError(`cant find product with productId ${productId}`, 404);
       }
     })
     .catch(err => next(err));
@@ -99,12 +99,12 @@ app.post('/api/cart', (req, res, next) => {
   `;
 
   if (!Number.isInteger(productId) || productId <= 0) {
-    return next(new ClientError('productId must be a positive integer', 404));
+    throw new ClientError('productId must be a positive integer', 404);
   }
   db.query(sql, params)
     .then(result => {
       if (!result.rows) {
-        return next(new ClientError('No results available at this moment', 400));
+        throw new ClientError('No results available at this moment', 400);
       } else {
         if (req.session.cartId) {
           return {
