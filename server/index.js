@@ -63,29 +63,39 @@ app.get('/api/products/:productId', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// Feature 5
 app.get('/api/cart', (req, res, next) => {
-  const getCart = `
-    select *
-    from "carts"
-  `;
-
-  db.query(getCart)
-    .then(result => {
-      const cart = result.rows;
-      return res.json(cart);
-    })
-    .catch(err => next(err));
+  const cartId = req.session.cartId;
+  if (!req.session.cartId) {
+    return res.json([]);
+  } else {
+    const sql = `
+      select "c"."cartItemId",
+       "c"."price",
+       "p"."productId",
+       "p"."image",
+       "p"."name",
+       "p"."shortDescription"
+       from "cartItems" as "c"
+       join "products" as "p" using ("productId")
+      where "c"."cartId" = $1
+    `;
+    const params = [cartId];
+    db.query(sql, params)
+      .then(result => {
+        return res.json(result.rows);
+      })
+      .catch(err => next(err));
+  }
 });
 
 app.post('/api/cart', (req, res, next) => {
-  const productId = req.params.productId;
+  const productId = parseInt(req.body.productId, 10);
   const params = [productId];
 
   const sql = `
     select "price"
     from "products"
-    where "productsId" = $1
+    where "productId" = $1
   `;
 
   if (!Number.isInteger(productId) || productId <= 0) {
@@ -118,8 +128,6 @@ app.post('/api/cart', (req, res, next) => {
       }
     })
     .then(data => {
-      // eslint-disable-next-line no-console
-      // console.log(data);
       req.session.cartId = data.cartId;
       const sql = `
         insert into "cartItems" ("cartId", "productId", "price")
@@ -127,7 +135,7 @@ app.post('/api/cart', (req, res, next) => {
         returning "cartItemId"
       `;
 
-      const params = [data.cartId, req.params.productId];
+      const params = [data.cartId, parseInt(req.body.productId, 10), data.price];
       return (
         db.query(sql, params)
           .then(result => result.rows[0])
@@ -148,7 +156,7 @@ app.post('/api/cart', (req, res, next) => {
       const params = [result.cartItemId];
       return db.query(sql, params)
         .then(result => {
-          res.status(201).json(result.row[0]);
+          res.status(201).json(result.rows[0]);
         });
     })
     .catch(err => next(err));
