@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
+import CartSummary from './cart-summary';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -68,7 +69,7 @@ export default class App extends React.Component {
         <>
           <div className="container-fluid bg-light vh-100">
             <div className="row bg-dark text-white vw-100 p-3 mb-5">
-              <Header />
+              <Header setView={this.setView} cartItemCount={this.state.cart.length}/>
             </div>
             <div>
               <ProductList details={this.setView} />
@@ -77,12 +78,25 @@ export default class App extends React.Component {
         </>
 
       );
-    } else {
+    } else if (this.state.view.name === 'cart') {
       return (
         <>
           <div className="container-fluid bg-light vh-100">
             <div className="row bg-dark text-white vw-100 p-3 mb-5">
-              <Header cartItemCount={this.state.cart.length}/>
+              <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
+            </div>
+            <div>
+              <CartSummary cart={this.state.cart} setView={this.setView} />
+            </div>
+          </div>
+        </>
+      );
+    } else if (this.state.view.name === 'details') {
+      return (
+        <>
+          <div className="container-fluid bg-light vh-100">
+            <div className="row bg-dark text-white vw-100 p-3 mb-5">
+              <Header setView={this.setView} cartItemCount={this.state.cart.length} />
             </div>
             <div className="d-flex justify-content-center">
               <ProductDetails details={this.setView} params={params} addToCart={this.addToCart} />
