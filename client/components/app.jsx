@@ -12,12 +12,39 @@ export default class App extends React.Component {
       view: {
         name: 'catalog',
         params: {}
-      }
+      },
+      cart: []
     };
     this.setView = this.setView.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
+    this.addToCart = this.addToCart.bind(this);
+  }
+
+  getCartItems() {
+    fetch('/api/cart')
+      .then(res => res.json())
+      .then(data => this.setState({ cart: data }))
+      .catch(err => console.error(err));
+  }
+
+  addToCart(product) {
+    fetch('/api/cart', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(product)
+    })
+      .then(res => res.json())
+      .then(data => {
+        const newCart = this.state.cart.concat(data);
+        this.setState({ cart: newCart });
+      })
+      .catch(err => console.error(err));
   }
 
   componentDidMount() {
+    this.getCartItems();
     fetch('/api/health-check')
       .then(res => res.json())
       .then(data => this.setState({ message: data.message || data.error }))
@@ -58,7 +85,7 @@ export default class App extends React.Component {
               <Header />
             </div>
             <div className="d-flex justify-content-center">
-              <ProductDetails details={this.setView} params={params} />
+              <ProductDetails details={this.setView} params={params} addToCart={this.addToCart} />
             </div>
           </div>
         </>
