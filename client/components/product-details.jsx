@@ -27,6 +27,8 @@ export default class ProductDetails extends React.Component {
   }
 
   render() {
+    const product = this.state.product;
+    const addToCart = this.props.addToCart;
     if (this.state.product === null) {
       return null;
     } else {
@@ -40,6 +42,7 @@ export default class ProductDetails extends React.Component {
                 <h5 className="card-title">{this.state.product.name}</h5>
                 <p className="text-muted">{'$' + (this.state.product.price / 100).toFixed(2)}</p>
                 <p className="card-text">{this.state.product.shortDescription}</p>
+                <button type="button" onClick={() => addToCart(product)} className="btn btn-primary">Add to Cart</button>
               </div>
             </div>
           </div>
