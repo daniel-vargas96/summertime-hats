@@ -82,7 +82,7 @@ export default class App extends React.Component {
         <>
           <div className="container-fluid bg-light vh-100">
             <div className="row bg-dark text-white vw-100 p-3 mb-5">
-              <Header />
+              <Header cartItemCount={this.state.cart.length}/>
             </div>
             <div className="d-flex justify-content-center">
               <ProductDetails details={this.setView} params={params} addToCart={this.addToCart} />
