@@ -181,6 +181,14 @@ app.post('/api/orders', (req, res, next) => {
   if (!name || !creditCard || !shippingAddress) {
     throw new ClientError('You are missing order information', 400);
   }
+
+  return db.query(sql, params)
+    .then(result => {
+      const order = result.rows[0];
+      delete req.session.cartId;
+      res.status(201).json(order);
+    })
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
