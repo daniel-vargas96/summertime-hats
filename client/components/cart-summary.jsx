@@ -17,7 +17,7 @@ export default function CartSummary(props) {
       <div className='container'>
         <span
           onClick={() => setView('catalog', {})}
-          className="text-muted ml-1 cursor-pointer">
+          className="text-muted ml-1 pointer">
           {'< Back to catalog'}
         </span>
         <h3 className="my-3">My Cart</h3>
@@ -28,14 +28,14 @@ export default function CartSummary(props) {
       <div className='container'>
         <span
           onClick={() => setView('catalog', {})}
-          className="text-muted ml-1 cursor-pointer">
+          className="text-muted ml-1 pointer">
           {'< Back to catalog'}
         </span>
         <h3 className="my-3">My Cart</h3>
         <div className="container">
           {cartItems}
         </div>
-        <h4 className="mt-3">Item Total {'$' + (total / 100).toFixed(2)}</h4>
+        <h4 className="mt-5">Item Total {'$' + (total / 100).toFixed(2)}</h4>
       </div>
     );
   }
