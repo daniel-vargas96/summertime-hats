@@ -45,11 +45,11 @@ export default class CheckoutForm extends React.Component {
           </div>
           <div className='form-group'>
             <label htmlFor='shipping-address'>Shipping Address</label>
-            <textarea name='creditCard' type='text' value={this.state.shippingAddress} onChange={this.handleChange} className='form-control'></textarea>
+            <textarea name='shippingAddress' type='text' value={this.state.shippingAddress} onChange={this.handleChange} className='form-control'></textarea>
           </div>
           <div className="d-flex justify-content-between">
-            <span onClick={() => setView('catalog', {})} className="text-muted cursor-pointer">{'< Continue Shopping'}</span>
-            <button type="submit" className="btn btn-primary">Place Order</button>
+            <span onClick={() => setView('catalog', {})} className="text-muted pointer">{'< Continue Shopping'}</span>
+            <button type="button" onSubmit={this.handleSubmit} className="btn btn-primary">Place Order</button>
           </div>
         </form>
       </div>

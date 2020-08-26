@@ -7,7 +7,7 @@ export default class Header extends React.Component {
     return (
       <div>
         <header className='container-fluid'>
-          <div className='row'>
+          <div className='row container-fluid'>
             <div className='col-10'>
               <h5>$Wicked Sales</h5>
             </div>

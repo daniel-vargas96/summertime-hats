@@ -3,6 +3,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -89,7 +90,7 @@ export default class App extends React.Component {
       return (
         <>
           <div className="container-fluid bg-light vh-100">
-            <div className="bg-dark text-white vw-100 p-3 mb-5">
+            <div className="bg-dark text-white p-3 mb-5">
               <Header setView={this.setView} cartItemCount={this.state.cart.length} />
             </div>
             <div>
@@ -103,7 +104,7 @@ export default class App extends React.Component {
       return (
         <>
           <div className="container-fluid bg-light vh-100">
-            <div className="containter-fluid bg-dark text-white vw-100 p-3 mb-5">
+            <div className="bg-dark text-white p-3 mb-5">
               <Header cartItemCount={this.state.cart.length} setView={this.setView} />
             </div>
             <div>
@@ -116,11 +117,25 @@ export default class App extends React.Component {
       return (
         <>
           <div className="container-fluid bg-light vh-100">
-            <div className="containter-fluid bg-dark text-white vw-100 p-3 mb-5">
+            <div className="bg-dark text-white p-3 mb-5">
               <Header setView={this.setView} cartItemCount={this.state.cart.length} />
             </div>
             <div className="d-flex justify-content-center">
               <ProductDetails details={this.setView} params={params} addToCart={this.addToCart} />
+            </div>
+          </div>
+        </>
+      );
+    }
+    else if (this.state.view.name === 'checkout') {
+      return (
+        <>
+          <div className="container-fluid bg-light vh-100">
+            <div className="bg-dark text-white p-3 mb-5">
+              <Header setView={this.setView} cartItemCount={this.state.cart.length} />
+            </div>
+            <div className="d-flex justify-content-center">
+              <CheckoutForm setView={this.setView} placeOrder={this.placeOrder} cart={this.state.cart} />
             </div>
           </div>
         </>
