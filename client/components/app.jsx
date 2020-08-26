@@ -3,6 +3,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -19,6 +20,28 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
+  }
+
+  placeOrder(order) {
+    fetch('/api/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          cart: [],
+          view: {
+            name: 'catalog',
+            params: {}
+          }
+        });
+      })
+      .catch(err => console.error(err));
   }
 
   getCartItems() {
@@ -68,8 +91,8 @@ export default class App extends React.Component {
       return (
         <>
           <div className="container-fluid bg-light vh-100">
-            <div className="row bg-dark text-white vw-100 p-3 mb-5">
-              <Header setView={this.setView} cartItemCount={this.state.cart.length}/>
+            <div className="bg-dark text-white p-3 mb-5">
+              <Header setView={this.setView} cartItemCount={this.state.cart.length} />
             </div>
             <div>
               <ProductList details={this.setView} />
@@ -82,8 +105,8 @@ export default class App extends React.Component {
       return (
         <>
           <div className="container-fluid bg-light vh-100">
-            <div className="row bg-dark text-white vw-100 p-3 mb-5">
-              <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
+            <div className="bg-dark text-white p-3 mb-5">
+              <Header cartItemCount={this.state.cart.length} setView={this.setView} />
             </div>
             <div>
               <CartSummary cart={this.state.cart} setView={this.setView} />
@@ -95,11 +118,24 @@ export default class App extends React.Component {
       return (
         <>
           <div className="container-fluid bg-light vh-100">
-            <div className="row bg-dark text-white vw-100 p-3 mb-5">
+            <div className="bg-dark text-white p-3 mb-5">
               <Header setView={this.setView} cartItemCount={this.state.cart.length} />
             </div>
             <div className="d-flex justify-content-center">
               <ProductDetails details={this.setView} params={params} addToCart={this.addToCart} />
+            </div>
+          </div>
+        </>
+      );
+    } else if (this.state.view.name === 'checkout') {
+      return (
+        <>
+          <div className="container-fluid bg-light vh-100">
+            <div className="bg-dark text-white p-3 mb-5">
+              <Header setView={this.setView} cartItemCount={this.state.cart.length} />
+            </div>
+            <div className="d-flex justify-content-center">
+              <CheckoutForm setView={this.setView} placeOrder={this.placeOrder} cart={this.state.cart} />
             </div>
           </div>
         </>

@@ -21,6 +21,7 @@ export default function CartSummary(props) {
           {'< Back to catalog'}
         </span>
         <h3 className="my-3">My Cart</h3>
+        <h4>Cart is Empty</h4>
       </div>
     );
   } else {
@@ -35,7 +36,14 @@ export default function CartSummary(props) {
         <div className="container">
           {cartItems}
         </div>
-        <h4 className="mt-5">Item Total {'$' + (total / 100).toFixed(2)}</h4>
+        <div className="align-items-center">
+          <h4 className="mt-5">Item Total: {'$' + (total / 100).toFixed(2)}</h4>
+          <button type="button" onClick={() => {
+            if (cart.length > 0) {
+              setView('checkout', {});
+            }
+          }} className="btn btn-primary mt-3 mb-3">Checkout</button>
+        </div>
       </div>
     );
   }
