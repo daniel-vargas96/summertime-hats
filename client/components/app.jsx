@@ -21,6 +21,27 @@ export default class App extends React.Component {
     this.addToCart = this.addToCart.bind(this);
   }
 
+  placeOrder(order) {
+    fetch('/api/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          cart: [],
+          view: {
+            name: 'catalog',
+            params: {}
+          }
+        });
+      })
+      .catch(err => console.error(err));
+  }
+
   getCartItems() {
     fetch('/api/cart')
       .then(res => res.json())
