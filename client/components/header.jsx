@@ -9,7 +9,7 @@ export default class Header extends React.Component {
         <header className='container-fluid'>
           <div className='row container-fluid'>
             <div className='col-10'>
-              <h5>$Wicked Sales</h5>
+              <h5>SummerTime Hats</h5>
             </div>
             <div className='col-2'>
               <div onClick={() => setView('cart', {})} className="d-flex align-items-center text-white pointer">
