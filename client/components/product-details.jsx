@@ -33,20 +33,22 @@ export default class ProductDetails extends React.Component {
       return null;
     } else {
       return (
-        <div className="card shadow object-fit p-3 col-md-10 d-flex">
-          <button className="btn btn-outline-light" onClick={this.handleClick}><p className="card-text"><small className="text-muted"> &lt; Back to catalog</small></p></button>
-          <div className="card-body">
-            <div className="d-flex">
-              <img className="mr-3" src={this.state.product.image} height="350px"></img>
-              <div>
-                <h5 className="card-title">{this.state.product.name}</h5>
-                <p className="text-muted">{'$' + (this.state.product.price / 100).toFixed(2)}</p>
-                <p className="card-text">{this.state.product.shortDescription}</p>
-                <button type="button" onClick={() => addToCart(product)} className="btn btn-primary">Add to Cart</button>
-              </div>
+        <div className="container card shadow object-fit p-3 col-md-10 d-flex">
+          <div className='row mb-3'>
+            <div onClick={this.handleClick}><p className="card-text"><small className="text-muted pointer ml-2 back"> &lt; Back to catalog</small></p></div>
+          </div>
+          <div className="row d-flex">
+            <img className="col-md-5 img-fluid" src={this.state.product.image} height="350px"></img>
+            <div className="col-md-7 card-details">
+              <h3 className='p-2'>{this.state.product.name}</h3>
+              <h5 className="text-muted p-2">{'$' + (this.state.product.price / 100).toFixed(2)}</h5>
+              <p className='p-2'>{this.state.product.shortDescription}</p>
+              <button type="button" onClick={() => addToCart(product)} className="btn btn-primary p-2">Add to Cart</button>
             </div>
           </div>
-          <p>{this.state.product.longDescription}</p>
+          <div className="row mt-3">
+            <p className='p-5'>{this.state.product.longDescription}</p>
+          </div>
         </div>
       );
     }

@@ -10,7 +10,7 @@ export default class Header extends React.Component {
           <div className='row container-fluid'>
             <div className='col-10 d-flex align-items-center'>
               <i className="fa fa-sun" aria-hidden="true"></i>
-              <h5 className='pl-2'>SummerTime Hats</h5>
+              <h5 onClick={() => setView('catalog', {})} className='pl-2 pointer'>SummerTime Hats</h5>
 
             </div>
             <div className='col-2'>

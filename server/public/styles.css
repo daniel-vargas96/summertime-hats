@@ -15,3 +15,30 @@
 .pointer {
   cursor: pointer;
 }
+
+body {
+  background-color: rgb(202, 202, 202);
+}
+
+.card-details {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Small Screen Devices */
+
+@media screen and (max-width: 762px) {
+  .back {
+    font-size: 20px;
+  }
+}
+
+/* Large Screen Devices */
+
+@media screen and (min-width: 1200px) {
+  .card-details {
+    position: relative;
+    top: 40%;
+  }
+}
