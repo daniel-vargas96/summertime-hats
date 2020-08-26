@@ -162,6 +162,35 @@ app.post('/api/cart', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/orders', (req, res, next) => {
+  const cartId = req.session.cartId;
+  const name = req.body.name;
+  const creditCard = req.body.creditCard;
+  const shippingAddress = req.body.shippingAddress;
+
+  const params = [cartId, name, creditCard, shippingAddress];
+  const sql = `
+    insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
+    values ($1, $2, $3, $4)
+    returning "orderId","createdAt", "name", "creditCard", "shippingAddress"
+  `;
+  if (!cartId) {
+    throw new ClientError('cartId not found', 400);
+  }
+
+  if (!name || !creditCard || !shippingAddress) {
+    throw new ClientError('You are missing order information', 400);
+  }
+
+  return db.query(sql, params)
+    .then(result => {
+      const order = result.rows[0];
+      delete req.session.cartId;
+      res.status(201).json(order);
+    })
+    .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
