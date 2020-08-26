@@ -33,9 +33,10 @@ export default class CheckoutForm extends React.Component {
     return (
       <div className='container'>
         <form onSubmit={this.handleSubmit}>
-          <h1 mt-4>My Cart</h1>
-          <h4 text-muted my-4>Order Total: ${(totalPrice / 100).toFixed(2)}</h4>
+          <h1 className='mt-4'>My Cart</h1>
+          <h4 className='text-muted my-4'>Order Total: ${(totalPrice / 100).toFixed(2)}</h4>
           <div className='form-group'>
+            <p>This form is for educational purposes only, please do not provide real credit card information.</p>
             <label htmlFor='name'>Name</label>
             <input name='name' type='text' value={this.state.name} onChange={this.handleChange} className='form-control'></input>
           </div>
@@ -49,7 +50,7 @@ export default class CheckoutForm extends React.Component {
           </div>
           <div className="d-flex justify-content-between">
             <span onClick={() => setView('catalog', {})} className="text-muted pointer">{'< Continue Shopping'}</span>
-            <button type="button" onSubmit={this.handleSubmit} className="btn btn-primary">Place Order</button>
+            <button type="submit" className="btn btn-primary">Place Order</button>
           </div>
         </form>
       </div>

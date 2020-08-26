@@ -20,6 +20,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   placeOrder(order) {
@@ -126,8 +127,7 @@ export default class App extends React.Component {
           </div>
         </>
       );
-    }
-    else if (this.state.view.name === 'checkout') {
+    } else if (this.state.view.name === 'checkout') {
       return (
         <>
           <div className="container-fluid bg-light vh-100">
