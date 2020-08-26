@@ -68,8 +68,8 @@ export default class App extends React.Component {
       return (
         <>
           <div className="container-fluid bg-light vh-100">
-            <div className="row bg-dark text-white vw-100 p-3 mb-5">
-              <Header setView={this.setView} cartItemCount={this.state.cart.length}/>
+            <div className="bg-dark text-white vw-100 p-3 mb-5">
+              <Header setView={this.setView} cartItemCount={this.state.cart.length} />
             </div>
             <div>
               <ProductList details={this.setView} />
@@ -82,8 +82,8 @@ export default class App extends React.Component {
       return (
         <>
           <div className="container-fluid bg-light vh-100">
-            <div className="row bg-dark text-white vw-100 p-3 mb-5">
-              <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
+            <div className="containter-fluid bg-dark text-white vw-100 p-3 mb-5">
+              <Header cartItemCount={this.state.cart.length} setView={this.setView} />
             </div>
             <div>
               <CartSummary cart={this.state.cart} setView={this.setView} />
@@ -95,7 +95,7 @@ export default class App extends React.Component {
       return (
         <>
           <div className="container-fluid bg-light vh-100">
-            <div className="row bg-dark text-white vw-100 p-3 mb-5">
+            <div className="containter-fluid bg-dark text-white vw-100 p-3 mb-5">
               <Header setView={this.setView} cartItemCount={this.state.cart.length} />
             </div>
             <div className="d-flex justify-content-center">

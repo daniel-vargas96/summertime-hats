@@ -6,11 +6,15 @@ export default class Header extends React.Component {
     const setView = this.props.setView;
     return (
       <div>
-        <header>
-          <h5>$Wicked Sales</h5>
-          <div onClick={() => setView('cart', {})} className="d-flex align-items-center text-white pointer">
-            <span className="mr-2">{this.props.cartItemCount} Items</span>
-            <i className="fas fa-shopping-cart cart-icon"></i>
+        <header className='container-fluid row'>
+          <div className='col-10'>
+            <h5>$Wicked Sales</h5>
+          </div>
+          <div className='col-2'>
+            <div onClick={() => setView('cart', {})} className="d-flex align-items-center text-white pointer">
+              <span className="mr-2">{this.props.cartItemCount} Items</span>
+              <i className="fas fa-shopping-cart cart-icon"></i>
+            </div>
           </div>
         </header>
       </div>
