@@ -4,7 +4,7 @@ A full stack Node.js and React shopping cart app.
 ## Live Demo
 
 Link to a live demo of the application:
-<a src="http://summertime-hats.danielvargas.tech/">SummerTime Hats</a>
+<a href="http://summertime-hats.danielvargas.tech/" target="_blank">SummerTime Hats</a>
 
 
 
