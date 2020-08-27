@@ -1,4 +1,4 @@
-# wicked-sales-js
+# SummerTime Hats
 A full stack Node.js and React shopping cart app.
 
 ## Live Demo
