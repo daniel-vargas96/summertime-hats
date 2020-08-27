@@ -31,6 +31,7 @@ Link to a live demo of the application:
 - User can place an order.
 
 ## Preview
+<img src="server/public/images/preview.gif"></img>
 
 
 
