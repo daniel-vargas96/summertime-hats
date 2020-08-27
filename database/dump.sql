@@ -241,6 +241,26 @@ COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
 11	3	2	2595
 12	3	1	2999
 13	3	5	9900
+14	4	1	2999
+15	5	5	9900
+16	5	2	2595
+17	5	6	830
+18	6	2	2595
+19	6	3	2900
+20	7	2	2595
+21	8	2	2595
+22	8	1	2999
+23	8	1	2999
+24	9	2	2595
+25	9	1	2999
+26	9	3	2900
+27	10	6	830
+28	10	3	2900
+29	11	5	9900
+30	11	6	830
+31	11	2	2595
+32	12	5	9900
+33	12	3	2900
 \.
 
 
@@ -252,6 +272,15 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 1	2020-07-26 16:37:50.266633-07
 2	2020-08-24 17:24:01.279592-07
 3	2020-08-25 11:58:37.703329-07
+4	2020-08-25 17:41:02.489279-07
+5	2020-08-25 18:37:02.133969-07
+6	2020-08-26 11:01:10.993105-07
+7	2020-08-26 11:47:01.030141-07
+8	2020-08-26 11:47:52.758047-07
+9	2020-08-26 14:17:05.526328-07
+10	2020-08-26 15:35:09.257948-07
+11	2020-08-26 15:36:19.087893-07
+12	2020-08-26 16:46:12.211139-07
 \.
 
 
@@ -260,6 +289,14 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 --
 
 COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", "createdAt") FROM stdin;
+3	4	Danny Vargas	123980348	123 Maple St	2020-08-25 17:42:03.308121-07
+4	6	Daniel Vargas	12345678	123 Maple St.	2020-08-26 11:46:30.88625-07
+5	7	Daniel Vargas	12345678	123 Maple St	2020-08-26 11:47:15.462353-07
+6	8	Daniel Vargas	12345678	123 Maple St\n	2020-08-26 14:14:49.078801-07
+7	9	Daniel Vargas	12345678	123 Maple St.	2020-08-26 14:57:35.430456-07
+8	10	Daniel Vargas	12345678	123 Maple St.	2020-08-26 15:35:42.938041-07
+9	11	Daniel Vargas	12345678	123 Maple St.	2020-08-26 16:38:28.589518-07
+10	12	Daniel Vargas	12345678	123 Maple St.	2020-08-26 16:46:36.494185-07
 \.
 
 
@@ -268,12 +305,12 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 --
 
 COPY public.products ("productId", name, price, image, "shortDescription", "longDescription") FROM stdin;
-1	Shake Weight	2999	/images/shake-weight.jpg	Dynamic Inertia technology ignites muscles in arms, shoulders, and chest.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-2	ShamWow	2595	/images/shamwow.jpg	It's like a chamois, towel, and sponge, all in one! Soaks up to 10x it's weight in any liquid!	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-3	Snuggie	2900	/images/snuggie.jpg	Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-4	Wax Vac	999	/images/wax-vac.jpg	Gentle way to remove ear wax. Safe and hygienic. Reduces the risk of painful infections.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-5	Ostrich Pillow	9900	/images/ostrich-pillow.jpg	Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-6	Tater Mitts	830	/images/tater-mitts.jpg	8 Seconds is all you need with Tater Mitts. Quickly and easily prepare all your favorite potato dishes with Tater Mitts.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
+5	Patron LP Cap	9900	/images/hat5.jpg	Low Profile - Unstructured 6-Panel	Bricks and Wood might not be on your radar yet, but the brands caps, including this sanded cotton twill number, are real standouts—and are all made in L.A.
+6	Messer Packable Fedora	830	/images/hat6.jpg	\tMedium Brim, Flat Brim, Semi-Floppy	One of our most-loved classics, now built with adventure top of mind. The Messer Packable fedora is a medium-brim classic, designed to make a statement and built with a material designed to bounce back when folded or rolled. Take it for a stroll around the block, or on a journey around the world.
+3	Gate Bucket Hat	2900	/images/hat7.jpg	Short Brim, Curved Brim, Semi-Floppy	The Gate Bucket Hat is a short-brim bucket hat made of mixed fabrics and featuring a direct embroidery logo. An easy stand-out piece that makes a statement.
+1	Oath Bucket Hat	2999	/images/hat8.jpg	Short Brim, Curved Brim, Semi-Floppy	The Oath Bucket Hat is a short-brim bucket hat made of cotton twill and featuring a direct embroidery logo. An easy stand-out piece that makes a statement.
+2	Oath LP Cap	2595	/images/hat9.jpg	Unstructured, 6-panel, Low Profile, Adjustable	The Oath LP Cap is alow profile, unstructured 6-panel cap. Made of cotton twill and featuring a merrowed edge embroidered patch, the Oath LP Cap is a style staple and is finished with a self-fabric adjuster to find the best fit.
+4	Grade Mesh Cap	999	/images/hat10.jpg	Structured, 6-panel, Medium Profile, Adjustable, Snapback	The Grade Mesh Cap is ahigh profile, structured 6-panel cap. Made of various fabrics and featuring a merrowed edge embroidered patch, the Grade Mesh Cap is a laidback staple and is finished with a plastic snap to find the best fit.
 \.
 
 
@@ -281,21 +318,21 @@ COPY public.products ("productId", name, price, image, "shortDescription", "long
 -- Name: cartItems_cartItemId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 13, true);
+SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 33, true);
 
 
 --
 -- Name: carts_cartId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."carts_cartId_seq"', 3, true);
+SELECT pg_catalog.setval('public."carts_cartId_seq"', 12, true);
 
 
 --
 -- Name: orders_orderId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."orders_orderId_seq"', 1, false);
+SELECT pg_catalog.setval('public."orders_orderId_seq"', 10, true);
 
 
 --
