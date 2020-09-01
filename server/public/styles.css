@@ -38,6 +38,38 @@ body {
   justify-content: center;
 }
 
+.modal-container {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 7;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5 );
+  text-align: center;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-message-container{
+  background-color: white;
+  height: 350px;
+  width: 500px;
+  margin: auto;
+}
+
+.modal-message-container > h3 {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
 /* Small Screen Devices */
 
 @media screen and (max-width: 762px) {

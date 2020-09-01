@@ -4,11 +4,13 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import ModalOverlay from './modal-overlay';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      noticeMessage: true,
       message: null,
       isLoading: true,
       view: {
@@ -21,6 +23,7 @@ export default class App extends React.Component {
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.closeNotice = this.closeNotice.bind(this);
   }
 
   placeOrder(order) {
@@ -76,6 +79,12 @@ export default class App extends React.Component {
       .finally(() => this.setState({ isLoading: false }));
   }
 
+  closeNotice() {
+    this.setState({
+      noticeMessage: false
+    });
+  }
+
   setView(name, params) {
     this.setState({
       view: {
@@ -90,6 +99,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       return (
         <>
+          <ModalOverlay closeNotice={this.closeNotice} startMessage={this.state.noticeMessage} />
           <div className="container-fluid vh-100">
             <div className="bg-dark text-white p-3 mb-5 see-through">
               <Header setView={this.setView} cartItemCount={this.state.cart.length} />
