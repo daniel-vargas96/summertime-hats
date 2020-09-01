@@ -3,7 +3,7 @@ import React from 'react';
 export default function ProductListItem(props) {
   return (
     <button onClick={props.details} type="button" className="btn">
-      <div className="card shadow object-fit">
+      <div className="card shadow object-fit items cards">
         <img className="card-img-top card-image" src={props.image}></img>
         <div className="card-body">
           <h5 className="card-title">{props.name}</h5>

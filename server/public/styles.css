@@ -3,6 +3,17 @@
   object-fit: contain;
 }
 
+
+.cards {
+  background-color: #fff;
+  opacity: .9;
+}
+
+.cards:hover {
+  opacity: 1;
+  border: 6px solid rgb(10, 70, 77);
+}
+
 .paragraph {
   height: 5rem;
   overflow-y: hidden;
@@ -17,7 +28,8 @@
 }
 
 body {
-  background-color: rgb(202, 202, 202);
+  background-image: url('./images/beach-bg2.jpg');
+  background-size: cover;
 }
 
 .card-details {
@@ -31,6 +43,10 @@ body {
 @media screen and (max-width: 762px) {
   .back {
     font-size: 20px;
+  }
+
+  .cards {
+    opacity: 1;
   }
 }
 

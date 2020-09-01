@@ -33,12 +33,12 @@ export default class ProductDetails extends React.Component {
       return null;
     } else {
       return (
-        <div className="container card shadow object-fit p-3 col-md-10 d-flex">
+        <div className="container card shadow object-fit p-3 col-md-10 d-flex mb-5">
           <div className='row mb-3'>
             <div onClick={this.handleClick}><p className="card-text"><small className="text-muted pointer ml-2 back"> &lt; Back to catalog</small></p></div>
           </div>
           <div className="row d-flex">
-            <img className="col-md-5 img-fluid" src={this.state.product.image} height="350px"></img>
+            <img className="col-md-5 img-fluid" src={this.state.product.image}></img>
             <div className="col-md-7 card-details">
               <h3 className='p-2'>{this.state.product.name}</h3>
               <h5 className="text-muted p-2">{'$' + (this.state.product.price / 100).toFixed(2)}</h5>
