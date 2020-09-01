@@ -91,7 +91,7 @@ export default class App extends React.Component {
       return (
         <>
           <div className="container-fluid vh-100">
-            <div className="bg-dark text-white p-3 mb-5">
+            <div className="bg-dark text-white p-3 mb-5 see-through">
               <Header setView={this.setView} cartItemCount={this.state.cart.length} />
             </div>
             <div>
