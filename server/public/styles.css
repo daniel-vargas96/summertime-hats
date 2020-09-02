@@ -111,6 +111,11 @@ body {
   padding: 1.5rem;
  }
 
+  .mobile-images {
+    height: 18rem;
+    object-fit: contain;
+  }
+
 }
 
 /* Large Screen Devices */
