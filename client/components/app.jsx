@@ -114,7 +114,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'cart') {
       return (
         <>
-          <div className="container-fluid vh-100">
+          <div className="container-fluid">
             <div className="bg-dark text-white p-3 mb-5">
               <Header cartItemCount={this.state.cart.length} setView={this.setView} />
             </div>
@@ -125,7 +125,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'details') {
       return (
         <>
-          <div className="container-fluid vh-100">
+          <div className="container-fluid">
             <div className="bg-dark text-white p-3 mb-5">
               <Header setView={this.setView} cartItemCount={this.state.cart.length} />
             </div>
@@ -138,11 +138,11 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'checkout') {
       return (
         <>
-          <div className="container-fluid vh-100">
+          <div className="container-fluid">
             <div className="bg-dark text-white p-3 mb-5">
               <Header setView={this.setView} cartItemCount={this.state.cart.length} />
             </div>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center mb-4">
               <CheckoutForm setView={this.setView} placeOrder={this.placeOrder} cart={this.state.cart} />
             </div>
           </div>
