@@ -34,8 +34,11 @@ export default class ProductDetails extends React.Component {
     } else {
       return (
         <div className="container card shadow object-fit p-3 col-md-10 d-flex mb-5">
-          <div className='row mb-3'>
-            <div onClick={this.handleClick}><p className="card-text"><small className="text-muted pointer ml-2 back"> &lt; Back to catalog</small></p></div>
+          <div className='row mb-3 ml-2'>
+            <div onClick={this.handleClick} className='pointer d-flex justify-content-center align-items-center ml-2 back'>
+              <i className="fa fa-arrow-left" aria-hidden="true"></i>
+              <p className="card-text ml-2">Back to catalog</p>
+            </div>
           </div>
           <div className="row d-flex">
             <img className="col-md-5 img-fluid" src={this.state.product.image}></img>

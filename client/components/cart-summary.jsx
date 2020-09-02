@@ -14,25 +14,24 @@ export default function CartSummary(props) {
 
   if (cart.length === 0) {
     return (
-      <div className='container'>
+      <div className='container empty-cart bg-light'>
         <span
           onClick={() => setView('catalog', {})}
-          className="text-muted ml-1 pointer">
+          className="ml-1 pointer">
           {'< Back to catalog'}
         </span>
-        <h3 className="my-3">My Cart</h3>
-        <h4>Cart is Empty</h4>
+        <h3 className="my-3">My Cart:</h3>
+        <h4><em>Cart is Empty</em></h4>
       </div>
     );
   } else {
     return (
-      <div className='container'>
-        <span
-          onClick={() => setView('catalog', {})}
-          className="text-muted ml-1 pointer">
-          {'< Back to catalog'}
+      <div className='container mb-5 bg-light p-3'>
+        <span onClick={() => setView('catalog', {})} className="pointer d-flex align-items-center ml-2 back">
+          <i className="fa fa-arrow-left" aria-hidden="true"></i>
+          <p className="card-text ml-2">Back to catalog</p>
         </span>
-        <h3 className="my-3">My Cart</h3>
+        <h3 className="my-3">My Cart:</h3>
         <div className="container">
           {cartItems}
         </div>

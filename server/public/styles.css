@@ -11,7 +11,6 @@
 
 .cards:hover {
   opacity: 1;
-  border: 6px solid rgb(10, 70, 77);
 }
 
 .paragraph {
@@ -23,6 +22,10 @@
   font-size: 24px;
 }
 
+.white-text {
+  color: #fff;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -31,6 +34,15 @@ body {
   background-image: url('./images/beach-bg2.jpg');
   background-size: cover;
 }
+
+.empty-cart {
+  position: relative;
+  width: 35vw;
+  height: 20vh;
+  top: 10%;
+  padding: 1rem;
+}
+
 
 .card-details {
   position: relative;
@@ -79,6 +91,16 @@ body {
 
   .cards {
     opacity: 1;
+  }
+
+  .container-padding {
+    padding: 1rem;
+    width: 100vw;
+    height: 70vh;
+  }
+
+  .item-padding {
+    padding-right: 2rem;
   }
 }
 
