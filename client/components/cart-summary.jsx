@@ -15,10 +15,9 @@ export default function CartSummary(props) {
   if (cart.length === 0) {
     return (
       <div className='container empty-cart bg-light'>
-        <span
-          onClick={() => setView('catalog', {})}
-          className="ml-1 pointer">
-          {'< Back to catalog'}
+        <span onClick={() => setView('catalog', {})} className="pointer d-flex align-items-center ml-2 back">
+          <i className="fa fa-arrow-left" aria-hidden="true"></i>
+          <p className="card-text ml-2">Back to catalog</p>
         </span>
         <h3 className="my-3">My Cart:</h3>
         <h4><em>Cart is Empty</em></h4>

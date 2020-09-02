@@ -309,6 +309,7 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 9	11	Daniel Vargas	12345678	123 Maple St.	2020-08-26 16:38:28.589518-07
 10	12	Daniel Vargas	12345678	123 Maple St.	2020-08-26 16:46:36.494185-07
 11	14	Daniel Vargas	12345678	123 Maple St. 	2020-09-02 11:24:20.805706-07
+12	15	Daniel Vargas	12345678	123 Maple St.	2020-09-02 14:32:44.279382-07
 \.
 
 
@@ -344,7 +345,7 @@ SELECT pg_catalog.setval('public."carts_cartId_seq"', 15, true);
 -- Name: orders_orderId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."orders_orderId_seq"', 11, true);
+SELECT pg_catalog.setval('public."orders_orderId_seq"', 12, true);
 
 
 --

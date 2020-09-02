@@ -103,10 +103,19 @@ body {
     padding-right: 2rem;
   }
 
+  .empty-cart {
+  position: relative;
+  width: 60vw;
+  height: 25vh;
+  top: 10%;
+  padding: 1.5rem;
+ }
+
   .mobile-images {
     height: 18rem;
     object-fit: contain;
   }
+
 }
 
 /* Large Screen Devices */
