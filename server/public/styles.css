@@ -102,6 +102,11 @@ body {
   .item-padding {
     padding-right: 2rem;
   }
+
+  .mobile-images {
+    height: 18rem;
+    object-fit: contain;
+  }
 }
 
 /* Large Screen Devices */
