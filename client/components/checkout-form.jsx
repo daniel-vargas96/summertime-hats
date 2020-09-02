@@ -38,15 +38,15 @@ export default class CheckoutForm extends React.Component {
           <div className='form-group'>
             <p><em>This form is for educational purposes only, please do not provide real credit card information.</em></p>
             <label htmlFor='name'>Name</label>
-            <input name='name' type='text' value={this.state.name} onChange={this.handleChange} className='form-control'></input>
+            <input required name='name' type='text' value={this.state.name} onChange={this.handleChange} className='form-control'></input>
           </div>
           <div className='form-group'>
             <label htmlFor='credit-card'>Credit Card</label>
-            <input name='creditCard' type='text' value={this.state.creditCard} onChange={this.handleChange} className='form-control'></input>
+            <input required name='creditCard' type='text' value={this.state.creditCard} onChange={this.handleChange} className='form-control'></input>
           </div>
           <div className='form-group'>
             <label htmlFor='shipping-address'>Shipping Address</label>
-            <textarea name='shippingAddress' type='text' value={this.state.shippingAddress} onChange={this.handleChange} className='form-control'></textarea>
+            <textarea required name='shippingAddress' type='text' value={this.state.shippingAddress} onChange={this.handleChange} className='form-control'></textarea>
           </div>
           <div className="d-flex justify-content-between">
             <span onClick={() => setView('catalog', {})} className="text-muted pointer d-flex align-items-center ml-2 back">
