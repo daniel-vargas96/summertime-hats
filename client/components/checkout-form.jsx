@@ -31,12 +31,12 @@ export default class CheckoutForm extends React.Component {
       return sum + item.price;
     }, 0);
     return (
-      <div className='container'>
+      <div className='container bg-light p-5'>
         <form onSubmit={this.handleSubmit}>
           <h1 className='mt-4'>My Cart</h1>
           <h4 className='text-muted my-4'>Order Total: ${(totalPrice / 100).toFixed(2)}</h4>
           <div className='form-group'>
-            <p>This form is for educational purposes only, please do not provide real credit card information.</p>
+            <p><em>This form is for educational purposes only, please do not provide real credit card information.</em></p>
             <label htmlFor='name'>Name</label>
             <input name='name' type='text' value={this.state.name} onChange={this.handleChange} className='form-control'></input>
           </div>
@@ -49,7 +49,10 @@ export default class CheckoutForm extends React.Component {
             <textarea name='shippingAddress' type='text' value={this.state.shippingAddress} onChange={this.handleChange} className='form-control'></textarea>
           </div>
           <div className="d-flex justify-content-between">
-            <span onClick={() => setView('catalog', {})} className="text-muted pointer">{'< Continue Shopping'}</span>
+            <span onClick={() => setView('catalog', {})} className="text-muted pointer d-flex align-items-center ml-2 back">
+              <i className="fa fa-arrow-left" aria-hidden="true"></i>
+              <p className="card-text ml-2">Continue Shopping</p>
+            </span>
             <button type="submit" className="btn btn-primary">Place Order</button>
           </div>
         </form>
