@@ -41,7 +41,7 @@ export default class ProductDetails extends React.Component {
             </div>
           </div>
           <div className="row d-flex">
-            <img className="col-md-5 img-fluid" src={this.state.product.image}></img>
+            <img className="col-md-5 mobile-images" src={this.state.product.image}></img>
             <div className="col-md-7 card-details">
               <h3 className='p-2'>{this.state.product.name}</h3>
               <h5 className="text-muted p-2">{'$' + (this.state.product.price / 100).toFixed(2)}</h5>
