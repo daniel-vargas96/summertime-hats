@@ -101,7 +101,7 @@ export default class App extends React.Component {
         <>
           <ModalOverlay closeNotice={this.closeNotice} startMessage={this.state.noticeMessage} />
           <div className="container-fluid vh-100">
-            <div className="bg-dark text-white p-3 mb-5 see-through">
+            <div className="bg-wallpaper bg-dark text-white p-3 mb-5 see-through">
               <Header setView={this.setView} cartItemCount={this.state.cart.length} />
             </div>
             <div>

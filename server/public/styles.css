@@ -1,3 +1,11 @@
+body {
+  background: rgb(117,127,154);
+background: radial-gradient(circle, rgba(117,127,154,1) 0%, rgba(215,221,232,1) 100%);
+background-size: cover;
+}
+
+
+
 .card-image {
   height: 18rem;
   object-fit: contain;
@@ -6,7 +14,7 @@
 
 .cards {
   background-color: #fff;
-  opacity: .9;
+  opacity: .75;
 }
 
 .cards:hover {
@@ -30,10 +38,7 @@
   cursor: pointer;
 }
 
-body {
-  background-image: url('./images/beach-bg2.jpg');
-  background-size: cover;
-}
+
 
 .empty-cart {
   position: relative;
