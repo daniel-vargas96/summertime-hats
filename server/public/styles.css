@@ -1,11 +1,3 @@
-body {
-  background: rgb(117,127,154);
-background: radial-gradient(circle, rgba(117,127,154,1) 0%, rgba(215,221,232,1) 100%);
-background-size: cover;
-}
-
-
-
 .card-image {
   height: 18rem;
   object-fit: contain;
@@ -38,7 +30,11 @@ background-size: cover;
   cursor: pointer;
 }
 
-
+body {
+  background: rgb(117,127,154);
+  background: radial-gradient(circle, rgba(117,127,154,1) 0%, rgba(215,221,232,1) 100%);
+  background-size: cover;
+}
 
 .empty-cart {
   position: relative;
