@@ -47,7 +47,7 @@ Link to a live demo of the application:
 
 1. Clone the repository:
     ```shell
-    git clone https://github.com/felix-chin/keycraft
+    git clone https://github.com/daniel-vargas96/summertime-hats
     cd keycraft
     ```
 2. Install npm dependencies:
